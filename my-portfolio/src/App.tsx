@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, ExternalLink, ChevronUp, MapPin } from "lucide-react";
+
 
 // ---
 // Aneesh Kandalgaonkar – Responsive Portfolio (React + TypeScript + Tailwind + Framer Motion)
@@ -267,9 +268,11 @@ const BackToTop: React.FC = () => {
 const PhotoPlaceholder = () => (
   <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
     <img
-      src="/me.jpg"
+      src={`${import.meta.env.BASE_URL}me.jpg`}   // ✅ works locally and on /Portfolio/
       alt="Aneesh Kandalgaonkar"
       className="w-full h-full object-cover"
+      loading="eager"
+      decoding="sync"
     />
   </div>
 );
@@ -352,6 +355,7 @@ const App: React.FC = () => {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
                   href={DATA.resumeUrl}
+                  download="Aneesh_Kandalgaonkar_Resume.pdf"
                   className="rounded-full bg-white text-black px-5 py-2 text-sm font-semibold border border-white/10 hover:scale-[1.02] active:scale-[0.98] transition-transform"
                 >
                   Download Resume
