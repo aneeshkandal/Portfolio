@@ -78,7 +78,7 @@ const DATA = {
   name: "Aneesh Kandalgaonkar",
   title: "Data Analytics & AI Engineer",
   summary:
-    "Master's student at DCU (Data Analytics) with hands-on experience in AI, data engineering, and full‑stack development. Passionate about building reliable, user‑centric systems that scale.",
+    "Graduate student in Data Analytics at Dublin City University with practical experience across AI, machine learning, and full-stack development. Skilled at transforming data into actionable insights and building scalable, user-focused solutions. Driven by a passion for solving complex problems, optimizing performance, and delivering technology that creates real-world impact.",
   location: "Dublin, Ireland",
   phone: "+353 894148591",
   email: "aneeshkandal.work@gmail.com",
@@ -166,28 +166,27 @@ const DATA = {
       name: "Self‑Learning Chatbot",
       description:
         "Menu‑driven customer‑support chatbot with quick‑reply options and escalation to human agents; learns from query‑response history to improve accuracy.",
-      links: [{ label: "Case Study", href: "#" }],
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/chatbot" }],
       tags: ["NLP", "Retrieval", "FreshChat", "Python"],
     },
     {
       name: "Blinkit Sales Analyzer",
       description:
         "Data cleaning, EDA, and time‑series forecasting with Python (pandas, statsmodels). Interactive Tableau dashboards for KPIs and seasonality.",
-      links: [{ label: "Dashboard", href: "#" }],
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/blinkit_sales_data_prediction" }],
       tags: ["Time Series", "Tableau", "Pandas"],
     },
     {
       name: "Fake News Detection Model",
       description:
         "Custom PyTorch datasets for 100k+ political news images & text; trained CNN and transformer models from scratch.",
-      links: [{ label: "Repo", href: "#" }],
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/fake_news_detection" }],
       tags: ["PyTorch", "Transformers", "Multimodal"],
     },
     {
       name: "AI‑Driven Data Analysis & Dev",
       description:
         "Full‑stack solutions for AI‑powered insights; AWS & OpenAI to enhance performance; data analysis for business decisions.",
-      links: [{ label: "Overview", href: "#" }],
       tags: ["Full‑stack", "AWS", "OpenAI"],
     },
   ],
@@ -325,8 +324,12 @@ const App: React.FC = () => {
       className="min-h-screen text-white selection:bg-white/20"
       style={{
         background:
-          "radial-gradient(1200px 600px at 120% -10%, rgba(255,255,255,0.08), rgba(0,0,0,0)), radial-gradient(800px 400px at -10% 110%, rgba(255,255,255,0.06), rgba(0,0,0,0)), linear-gradient(135deg, #0a0a0a 0%, #7f1d1d 60%, #991b1b 100%)",
+          "radial-gradient(1200px 600px at 120% -10%, rgba(255,255,255,0.08), rgba(0,0,0,0)), " +
+          "radial-gradient(800px 400px at -10% 110%, rgba(255,255,255,0.06), rgba(0,0,0,0)), " +
+          "linear-gradient(135deg, #0a0a0a 0%, #1e3a8a 60%, #1e40af 100%)", // black → midnight blue
       }}
+
+
     >
       <NavBar active={active as SectionId} />
 
@@ -382,12 +385,10 @@ const App: React.FC = () => {
       {/* ABOUT */}
       <Section id="about" className="py-4">
         <div className="max-w-6xl mx-auto px-6">
-          <Heading title="About" subtitle="I love turning data into decisions and prototypes into polished products. I’m currently pursuing a master's at DCU while building ML‑powered applications and robust backend services." />
+          <Heading title="About" subtitle="I enjoy transforming complex data into clear decisions and evolving ideas into reliable, production-ready solutions. Currently pursuing a Master’s in Data Analytics at Dublin City University, I focus on building machine learning–driven applications and robust backend systems that blend technical depth with real-world usability." />
           <Card className="p-6">
             <p className="text-white/90 leading-relaxed">
-              My background spans software development, data analytics, and machine learning. I’ve worked across
-              internships and part‑time roles managing operations and building data & API solutions. I thrive in fast‑moving environments,
-              own problems end‑to‑end, and care deeply about usability, performance, and maintainability.
+              With a background in software development, data analytics, and machine learning, I bring hands-on experience from internships and part-time roles where I managed operations and built data-driven solutions. I excel in fast-paced environments, take ownership of projects end-to-end, and place strong emphasis on usability, performance, and maintainability in everything I build.
             </p>
           </Card>
         </div>
@@ -503,13 +504,22 @@ const App: React.FC = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="mt-4">
-                    {p.links.map((l, j) => (
-                      <a key={j} href={l.href} className="inline-flex items-center gap-1 text-sm underline decoration-white/40 underline-offset-4 hover:decoration-white" target="_blank" rel="noreferrer">
-                        {l.label} <ExternalLink className="h-4 w-4" />
-                      </a>
-                    ))}
-                  </div>
+                  {("links" in p) && p.links && (
+                      <div className="mt-4">
+                        {p.links.map((l, j) => (
+                          <a
+                            key={j}
+                            href={l.href}
+                            className="inline-flex items-center gap-1 text-sm underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {l.label} <ExternalLink className="h-4 w-4" />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
                 </Card>
               </motion.div>
             ))}
