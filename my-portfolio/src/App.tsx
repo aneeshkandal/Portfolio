@@ -267,7 +267,7 @@ const BackToTop: React.FC = () => {
 const PhotoPlaceholder = () => (
   <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
     <img
-      src={`${import.meta.env.BASE_URL}me.jpg`}   // ✅ works locally and on /Portfolio/
+      src={`${import.meta.env.BASE_URL}me.jpeg`}   // ✅ works locally and on /Portfolio/
       alt="Aneesh Kandalgaonkar"
       className="w-full h-full object-cover"
       loading="eager"
