@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, ExternalLink, ChevronUp, MapPin } from "lucide-react";
+import { Github, Linkedin, ExternalLink, ChevronUp, MapPin, CheckCircle2 } from "lucide-react";
 
 
 // ---
@@ -19,9 +19,9 @@ const sections = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -78,10 +78,8 @@ const DATA = {
   name: "Aneesh Kandalgaonkar",
   title: "Data Analytics & AI Engineer",
   summary:
-    "Graduate student in Data Analytics at Dublin City University with practical experience across AI, machine learning, and full-stack development. Skilled at transforming data into actionable insights and building scalable, user-focused solutions. Driven by a passion for solving complex problems, optimizing performance, and delivering technology that creates real-world impact.",
+    "Data Analytics graduate (Dublin City University) with hands-on experience across AI, machine learning, and full-stack development. Skilled at transforming data into actionable insights and building scalable, user-focused solutions. Currently open to Data Analytics, Machine Learning, and AI Engineering roles.",
   location: "Dublin, Ireland",
-  phone: "+353 894148591",
-  email: "aneeshkandal.work@gmail.com",
   linkedin: "https://linkedin.com/in/aneeshkandal",
   github: "https://github.com/aneeshkandal",
   // If you have a hosted PDF, replace with its URL
@@ -103,26 +101,23 @@ const DATA = {
   ],
 
   skills: {
-    programming:
-      ["Java (Core/Advanced)", "Python", "JavaScript", "TypeScript", "React", "Android", "AWS", "OpenAI", "Firebase", "REST APIs", "Machine Learning", "Data Analytics", "Excel", "Tableau", "SQL", "Statistical Analysis"],
-    libraries:
-      ["PyTorch", "TensorFlow", "scikit-learn", "Pandas", "NumPy", "OpenCV", "Git", "Docker", "NLTK", "spaCy", "HuggingFace"],
-    architectures: ["CNN", "YOLO", "Transformers (BERT, LSTM)", "RAFT"],
-    soft: [
-      "Problem Solving",
-      "Critical Thinking",
-      "Communication",
-      "Storytelling with Data",
-      "Cross‑functional Collaboration",
-      "Attention to Detail",
-      "Team Leadership",
-      "Accountability",
-      "Customer Service Orientation",
-      "Organizational Skills",
-      "Conflict Resolution",
-      "Adaptability",
-      "Time Management",
+    core: ["Python", "SQL", "Machine Learning", "PyTorch", "Pandas", "scikit-learn", "Tableau", "Data Analytics"],
+    also: [
+      "Java",
+      "TypeScript / React",
+      "AWS",
+      "OpenAI API",
+      "TensorFlow",
+      "NumPy",
+      "OpenCV",
+      "NLTK / spaCy",
+      "HuggingFace",
+      "Git",
+      "Docker",
+      "REST APIs",
+      "Statistical Analysis",
     ],
+    architectures: ["CNN", "YOLO", "Transformers (BERT, LSTM)", "RAFT"],
   },
 
   experience: [
@@ -135,6 +130,7 @@ const DATA = {
         "Managed end‑to‑end shift operations including order dispatch, inventory control, and fleet coordination to meet tight delivery timelines.",
         "Supervised inbound/outbound logistics and optimized warehouse workflows for accurate stock handling and timely receipt of goods.",
         "Handled customer interactions via live chat, resolved service issues, processed returns, and prepped next‑day inbounds.",
+        "Led a shift team through high-volume, time-critical periods — building the same calm, prioritize-under-pressure judgment that data and analytics roles demand when deadlines and stakeholders stack up.",
       ],
     },
     {
@@ -163,41 +159,52 @@ const DATA = {
 
   projects: [
     {
-      name: "Self‑Learning Chatbot",
-      description:
-        "Menu‑driven customer‑support chatbot with quick‑reply options and escalation to human agents; learns from query‑response history to improve accuracy.",
-      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/chatbot" }],
-      tags: ["NLP", "Retrieval", "FreshChat", "Python"],
+      name: "Fake News Detection Model",
+      problem:
+        "Political misinformation spreads fast online and shows up in both images and text, so a text-only or image-only classifier misses a lot of it.",
+      built:
+        "Built custom PyTorch datasets from 100k+ labelled political news posts (image + text). Trained a CNN classifier from scratch for binary real/fake detection, then a multimodal BERT + ResNet transformer for finer-grained, 5-level truthfulness classification.",
+      result:
+        "97.6% test accuracy on binary real/fake classification (59K-post test set); 84.7% accuracy on the harder 5-class truthfulness task.",
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/fake_news_detection" }],
+      tags: ["PyTorch", "CNN", "Transformers (BERT)", "Multimodal"],
     },
     {
       name: "Blinkit Sales Analyzer",
-      description:
-        "Data cleaning, EDA, and time‑series forecasting with Python (pandas, statsmodels). Interactive Tableau dashboards for KPIs and seasonality.",
+      problem:
+        "Raw order, product, and customer exports were spread across multiple tables, making revenue trends, seasonality, and stock planning hard to see.",
+      built:
+        "Cleaned and merged the datasets in Python (pandas), ran EDA on revenue trends, category/product performance, delivery times, and customer sentiment, then built SARIMA time-series models to forecast revenue by category and top product. Published the results as interactive Tableau dashboards.",
+      result:
+        "Delivered 3-month revenue forecasts by category and product plus a KPI dashboard covering 5,000+ orders, used to flag underperforming categories early.",
       links: [{ label: "Repo", href: "https://github.com/aneeshkandal/blinkit_sales_data_prediction" }],
-      tags: ["Time Series", "Tableau", "Pandas"],
+      tags: ["Time Series", "Tableau", "Pandas", "SARIMA"],
     },
     {
-      name: "Fake News Detection Model",
-      description:
-        "Custom PyTorch datasets for 100k+ political news images & text; trained CNN and transformer models from scratch.",
-      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/fake_news_detection" }],
-      tags: ["PyTorch", "Transformers", "Multimodal"],
-    },
-    {
-      name: "AI‑Driven Data Analysis & Dev",
-      description:
-        "Full‑stack solutions for AI‑powered insights; AWS & OpenAI to enhance performance; data analysis for business decisions.",
-      tags: ["Full‑stack", "AWS", "OpenAI"],
+      name: "Self‑Learning Support Chatbot",
+      problem:
+        "Support teams answering the same handful of order/delivery questions over live chat, with slow response times during peak volume.",
+      built:
+        "Trained a TF-IDF + calibrated LinearSVC intent classifier on the 27K-row Bitext customer-support dataset, wired it into a menu-driven quick-reply flow with escalation to a human agent, and deployed it as a FastAPI webhook integrated with Freshchat.",
+      result:
+        "Automated first-response handling for the most common support intents, with a clear handoff path to a human agent when the model's confidence was low.",
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/chatbot" }],
+      tags: ["NLP", "scikit-learn", "FastAPI", "Freshchat"],
     },
   ],
 } as const;
 
 // Skill chip with hover reveal
-const SkillChip: React.FC<{ text: string }> = ({ text }) => (
+const SkillChip: React.FC<{ text: string; strong?: boolean }> = ({ text, strong }) => (
   <motion.span
     whileHover={{ scale: 1.05 }}
-    className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm text-white/90 backdrop-blur-sm transition-shadow hover:shadow-md hover:shadow-black/30"
+    className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm backdrop-blur-sm transition-shadow hover:shadow-md hover:shadow-black/30 ${
+      strong
+        ? "border-white/40 bg-white/20 text-white font-semibold"
+        : "border-white/20 bg-white/10 text-white/90"
+    }`}
   >
+    {strong && <CheckCircle2 className="h-3.5 w-3.5" />}
     {text}
   </motion.span>
 );
@@ -220,12 +227,6 @@ const SocialLinks = () => (
     </a>
     <a href={DATA.linkedin} target="_blank" rel="noreferrer" className="text-white/90 hover:text-white transition">
       <Linkedin className="h-5 w-5" />
-    </a>
-    <a href={`mailto:${DATA.email}`} className="text-white/90 hover:text-white transition">
-      <Mail className="h-5 w-5" />
-    </a>
-    <a href={`tel:${DATA.phone.replace(/\s/g, "")}`} className="text-white/90 hover:text-white transition">
-      <Phone className="h-5 w-5" />
     </a>
   </div>
 );
@@ -343,8 +344,14 @@ const App: React.FC = () => {
             className="grid grid-cols-1 md:grid-cols-[1.2fr_.8fr] items-center gap-10 py-12"
           >
             <div>
-              <div className="flex items-center gap-2 text-white/80 text-sm">
-                <MapPin className="h-4 w-4" /> {DATA.location}
+              <div className="flex flex-wrap items-center gap-3 text-white/80 text-sm">
+                <span className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" /> {DATA.location}
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/40 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                  Open to work
+                </span>
               </div>
               <h1
                 className="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight"
@@ -385,7 +392,7 @@ const App: React.FC = () => {
       {/* ABOUT */}
       <Section id="about" className="py-4">
         <div className="max-w-6xl mx-auto px-6">
-          <Heading title="About" subtitle="I enjoy transforming complex data into clear decisions and evolving ideas into reliable, production-ready solutions. Currently pursuing a Master’s in Data Analytics at Dublin City University, I focus on building machine learning–driven applications and robust backend systems that blend technical depth with real-world usability." />
+          <Heading title="About" subtitle="I enjoy transforming complex data into clear decisions and evolving ideas into reliable, production-ready solutions. I hold a Master's in Data Analytics from Dublin City University, where I focused on building machine learning–driven applications and robust backend systems that blend technical depth with real-world usability." />
           <Card className="p-6">
             <p className="text-white/90 leading-relaxed">
               With a background in software development, data analytics, and machine learning, I bring hands-on experience from internships and part-time roles where I managed operations and built data-driven solutions. I excel in fast-paced environments, take ownership of projects end-to-end, and place strong emphasis on usability, performance, and maintainability in everything I build.
@@ -417,23 +424,80 @@ const App: React.FC = () => {
 
       <GradientDivider />
 
+      {/* PROJECTS */}
+      <Section id="projects" className="py-4">
+        <div className="max-w-6xl mx-auto px-6">
+          <Heading title="Projects" subtitle="A selection of recent work — the problem, what I built, and the measured result." />
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {DATA.projects.map((p, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <Card className="p-6 h-full flex flex-col">
+                  <h3 className="text-lg font-semibold" style={{ WebkitTextStroke: "0.5px #000" }}>{p.name}</h3>
+
+                  <p className="text-xs uppercase tracking-wide text-white/50 mt-3">Problem</p>
+                  <p className="text-sm text-white/90 mt-1">{p.problem}</p>
+
+                  <p className="text-xs uppercase tracking-wide text-white/50 mt-3">Built</p>
+                  <p className="text-sm text-white/90 mt-1">{p.built}</p>
+
+                  <p className="text-xs uppercase tracking-wide text-white/50 mt-3">Result</p>
+                  <p className="text-sm font-medium text-emerald-200 mt-1">{p.result}</p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <span key={t} className="text-xs px-2 py-1 rounded-full border border-white/20 bg-white/5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {("links" in p) && p.links && (
+                      <div className="mt-4 pt-4 border-t border-white/10">
+                        {p.links.map((l, j) => (
+                          <a
+                            key={j}
+                            href={l.href}
+                            className="inline-flex items-center gap-1 text-sm underline decoration-white/40 underline-offset-4 hover:decoration-white"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {l.label} <ExternalLink className="h-4 w-4" />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <GradientDivider />
+
       {/* SKILLS */}
       <Section id="skills" className="py-4">
         <div className="max-w-6xl mx-auto px-6">
-          <Heading title="Skills" subtitle="Hover over the chips — everything stays visible and aligned, with smooth micro‑interactions." />
+          <Heading title="Skills" subtitle="Tools I use to turn data into decisions." />
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="p-6">
-              <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>Programming & Platforms</h4>
+            <Card className="p-6 md:col-span-2">
+              <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>Core Stack</h4>
               <div className="flex flex-wrap gap-2">
-                {DATA.skills.programming.map((s) => (
-                  <SkillChip key={s} text={s} />
+                {DATA.skills.core.map((s) => (
+                  <SkillChip key={s} text={s} strong />
                 ))}
               </div>
             </Card>
             <Card className="p-6">
-              <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>Libraries & Tools</h4>
+              <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>Also Comfortable With</h4>
               <div className="flex flex-wrap gap-2">
-                {DATA.skills.libraries.map((s) => (
+                {DATA.skills.also.map((s) => (
                   <SkillChip key={s} text={s} />
                 ))}
               </div>
@@ -442,14 +506,6 @@ const App: React.FC = () => {
               <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>ML Architectures</h4>
               <div className="flex flex-wrap gap-2">
                 {DATA.skills.architectures.map((s) => (
-                  <SkillChip key={s} text={s} />
-                ))}
-              </div>
-            </Card>
-            <Card className="p-6">
-              <h4 className="text-lg font-semibold mb-3" style={{ WebkitTextStroke: "0.5px #000" }}>Soft Skills</h4>
-              <div className="flex flex-wrap gap-2">
-                {DATA.skills.soft.map((s) => (
                   <SkillChip key={s} text={s} />
                 ))}
               </div>
@@ -481,54 +537,6 @@ const App: React.FC = () => {
 
       <GradientDivider />
 
-      {/* PROJECTS */}
-      <Section id="projects" className="py-4">
-        <div className="max-w-6xl mx-auto px-6">
-          <Heading title="Projects" subtitle="A selection of recent work. Click through where available." />
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {DATA.projects.map((p, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <Card className="p-6 h-full">
-                  <h3 className="text-lg font-semibold" style={{ WebkitTextStroke: "0.5px #000" }}>{p.name}</h3>
-                  <p className="text-sm text-white/90 mt-2 min-h-[56px]">{p.description}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span key={t} className="text-xs px-2 py-1 rounded-full border border-white/20 bg-white/5">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  {("links" in p) && p.links && (
-                      <div className="mt-4">
-                        {p.links.map((l, j) => (
-                          <a
-                            key={j}
-                            href={l.href}
-                            className="inline-flex items-center gap-1 text-sm underline decoration-white/40 underline-offset-4 hover:decoration-white"
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {l.label} <ExternalLink className="h-4 w-4" />
-                          </a>
-                        ))}
-                      </div>
-                    )}
-
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <GradientDivider />
-
       {/* CONTACT */}
       <Section id="contact" className="py-4">
         <div className="max-w-6xl mx-auto px-6">
@@ -537,12 +545,10 @@ const App: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <div className="space-y-2 text-white/90">
-                  <div className="flex items-center gap-2"><Mail className="h-4 w-4" /> <a className="underline decoration-white/30 underline-offset-4 hover:decoration-white" href={`mailto:${DATA.email}`}>{DATA.email}</a></div>
-                  <div className="flex items-center gap-2"><Phone className="h-4 w-4" /> <a href={`tel:${DATA.phone.replace(/\s/g, "")}`}>{DATA.phone}</a></div>
                   <div className="flex items-center gap-2"><Linkedin className="h-4 w-4" /> <a className="underline decoration-white/30 underline-offset-4 hover:decoration-white" target="_blank" rel="noreferrer" href={DATA.linkedin}>LinkedIn</a></div>
                   <div className="flex items-center gap-2"><Github className="h-4 w-4" /> <a className="underline decoration-white/30 underline-offset-4 hover:decoration-white" target="_blank" rel="noreferrer" href={DATA.github}>GitHub</a></div>
                 </div>
-                <p className="mt-4 text-sm text-white/80">I usually respond within a day.</p>
+                <p className="mt-4 text-sm text-white/80">Use the form to reach me directly — I usually respond within a day.</p>
               </div>
               <form
                 action="https://formspree.io/f/mjkepqpw"
@@ -593,7 +599,7 @@ const App: React.FC = () => {
           <div className="flex items-center gap-4">
             <a href={DATA.github} target="_blank" rel="noreferrer" className="hover:text-white">GitHub</a>
             <a href={DATA.linkedin} target="_blank" rel="noreferrer" className="hover:text-white">LinkedIn</a>
-            <a href={`mailto:${DATA.email}`} className="hover:text-white">Email</a>
+            <a href="#contact" className="hover:text-white">Contact</a>
           </div>
         </div>
       </footer>
