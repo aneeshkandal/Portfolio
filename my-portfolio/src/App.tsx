@@ -131,6 +131,7 @@ const DATA = {
         "Supervised inbound/outbound logistics and optimized warehouse workflows for accurate stock handling and timely receipt of goods.",
         "Handled customer interactions via live chat, resolved service issues, processed returns, and prepped next‑day inbounds.",
         "Led a shift team through high-volume, time-critical periods — building the same calm, prioritize-under-pressure judgment that data and analytics roles demand when deadlines and stakeholders stack up.",
+        "Built an operations analytics platform (see Projects) covering stock, supplier, and delivery-risk visibility across all 3 warehouses, off the back of first-hand experience with the gaps in day-to-day decision-making.",
       ],
     },
     {
@@ -158,6 +159,17 @@ const DATA = {
   ],
 
   projects: [
+    {
+      name: "Shuppa Operations Intelligence Platform",
+      problem:
+        "As shift lead I watched day-to-day warehouse calls — when to reorder, which suppliers to trust, where to place stock — get made from gut feel and spreadsheets, with no shared view across Shuppa's 3 Dublin warehouses.",
+      built:
+        "A full-stack ops platform (FastAPI + PostgreSQL backend, Next.js frontend) built on real inventory, sales, supplier, and purchase-order history across Lombard, Kimmage, and Finglas: 5 dashboard pages (Stock Summary, Supplier Summary, Stock Optimizer, Sales Analytics, Delivery Risk Predictor), a cross-domain Alerts Center, and a role-based Admin console with JWT auth, account lockout, audit logging, and bulk CSV upload.",
+      result:
+        "Replaced spreadsheet-based decisions with a live dashboard covering ~20K real purchase orders and ~84 suppliers across 3 warehouses, including a Smart Placement Advisor that scores every storage slot by capacity, fit, and fragility before a product is stocked.",
+      links: [{ label: "Repo", href: "https://github.com/aneeshkandal/shuppa-ops-platform" }],
+      tags: ["FastAPI", "Next.js", "PostgreSQL", "Full-stack"],
+    },
     {
       name: "Fake News Detection Model",
       problem:
